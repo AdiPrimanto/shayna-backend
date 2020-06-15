@@ -19,12 +19,14 @@ class TransactionDetail extends Model
     ];
 
     //relasi ke tabel transaction
-    public function transaction() {
+    public function transaction()
+    {
         return $this->belongsTo(Transaction::class, 'transactions_id', 'id');
     }
 
     //relasi ke tabel product
-    public function product() {
+    public function product()
+    {
         return $this->belongsTo(Product::class, 'products_id', 'id');
     }
 }

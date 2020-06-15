@@ -18,9 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('products', 'API\ProductController@all');
-
 //mengirimkan data utk sebuah transaksi
 Route::post('checkout', 'API\CheckoutController@checkout');
-
 //mengambil data transaksi berdasarkan id
 Route::get('transactions/{id}', 'API\TransactionController@get');

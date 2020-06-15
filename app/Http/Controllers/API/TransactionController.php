@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    public function get(Request $request, $id){
+    public function get(Request $request, $id)
+    {
         $product = Transaction::with(['details.product'])->find($id);
 
         if($product)

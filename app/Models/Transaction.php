@@ -10,7 +10,8 @@ class Transaction extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'uuid', 'name', 'email', 'number', 'address', 'transaction_total', 'transaction_status'
+        'uuid', 'name', 'email', 'number', 'address', 
+        'transaction_total', 'transaction_status'
     ];
 
     //ada bbrp variabel(cth: name) yg gk mau kita munculin kita bs masukan ke hidden
@@ -19,7 +20,8 @@ class Transaction extends Model
     ];
 
     //relasi ke tabel transaction-detail
-    public function details() {
+    public function details()
+    {
         return $this->hasMany(TransactionDetail::class, 'transactions_id');
     }
 }

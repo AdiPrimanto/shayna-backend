@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
+
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    //digunakan agar cms ini tdk bs dibuka jk blm login
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -22,6 +27,7 @@ class TransactionController extends Controller
     public function index()
     {
         $items = Transaction::all();
+
         return view('pages.transactions.index')->with([
             'items' => $items
         ]);
@@ -57,6 +63,7 @@ class TransactionController extends Controller
     public function show($id)
     {
         $item = Transaction::with('details.product')->findOrFail($id);
+
         return view('pages.transactions.show')->with([
             'item' => $item
         ]);
@@ -71,6 +78,7 @@ class TransactionController extends Controller
     public function edit($id)
     {
         $item = Transaction::findOrFail($id);
+
         return view('pages.transactions.edit')->with([
             'item' => $item
         ]);
@@ -107,7 +115,8 @@ class TransactionController extends Controller
         return redirect()->route('transactions.index');
     }
 
-    public function setStatus(Request $request, $id){
+    public function setStatus(Request $request, $id)
+    {
         $request->validate([
             'status' => 'required|in:PENDING,SUCCESS,FAILED'
         ]);

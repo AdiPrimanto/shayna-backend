@@ -5,17 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductGallery;
 use App\Http\Requests\ProductRequest;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    //digunakan agar cms ini tdk bs dibuka jk blm login
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth');
     }
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -75,6 +80,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $item = Product::findOrFail($id);
+
         return view('pages.products.edit')->with([
             'item' => $item
         ]);
@@ -114,8 +120,9 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
-    public function gallery(Request $request, $id){
-        $product = Product::findOrFail($id);
+    public function gallery(Request $request, $id)
+    {
+        $product = Product::findorFail($id);
         $items = ProductGallery::with('product')
             ->where('products_id', $id)
             ->get();

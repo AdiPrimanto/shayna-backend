@@ -19,7 +19,8 @@ class Product extends Model
     ];
 
     //relasi ke tabel product-gallery
-    public function galleries() {
-        return $this->hasMany(ProductGallery::class, 'products_id');
+    public function galleries()
+    {
+        return $this->hasMany(ProductGallery::class,'products_id');
     }
 }

@@ -25,11 +25,11 @@ class ProductRequest extends FormRequest
     {
         //form request utk validasi inputan yg akan masuk ke website
         return [
-            'name'          => 'required|max:255',
-            'type'          => 'required|max:255',
-            'description'   => 'required',
-            'price'         => 'required|integer',
-            'quantity'      => 'required|integer'
+            'name' => 'required|max:255',
+            'type' => 'required|max:255',
+            'description' => 'required',
+            'price' => 'required|integer',
+            'quantity' => 'required|integer'
         ];
     }
 }
